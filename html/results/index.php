@@ -139,7 +139,7 @@
                 $conn->query($update_query);
 				};
 	              //make array of years
-	              @$sql_years_query = "SELECT DISTINCT year FROM testema WHERE exam = '${_GET['exam']}' AND subject = '${_GET['subject']}'". lang($_GET["lang"]) . lvl($_GET["lvl"]) . "  ORDER BY year DESC";
+	              @$sql_years_query = "SELECT DISTINCT `year` FROM ema WHERE exam = '${_GET['exam']}' AND subject = '${_GET['subject']}'". lang($_GET["lang"]) . lvl($_GET["lvl"]) . "  ORDER BY year DESC";
 	              $yearres = $conn->query($sql_years_query);
 	              if ($yearres->num_rows > 0) {
 	                global $years;
@@ -155,7 +155,7 @@
 	                  echo "<p class='box'>It appears there is no material for the filters you have selected</p>";
 	              }
 	                foreach(array_keys($years) as $i){
-	                  @$sql_query = "SELECT * FROM testema WHERE exam = '${_GET['exam']}' AND subject = '${_GET['subject']}' ". lang($_GET["lang"]) . " " . lvl($_GET["lvl"]) . "  AND year = '$i'";
+	                  @$sql_query = "SELECT * FROM ema WHERE exam = '${_GET['exam']}' AND subject = '${_GET['subject']}' ". lang($_GET["lang"]) . " " . lvl($_GET["lvl"]) . "  AND year = '$i'";
 	                  @$result = $conn->query($sql_query);
 	  
 	                  if ($result->num_rows > 0) {
