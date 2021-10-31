@@ -1,0 +1,4 @@
+GRANT SELECT on `examsearch`.* to PHP@localhost
+GRANT INSERT on `clicks` to PHP@localhost
+GRANT INSERT on `uses` to PHP@localhost
+GRANT UPDATE on `uses` to PHP@localhost
