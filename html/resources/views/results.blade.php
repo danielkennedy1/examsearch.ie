@@ -41,7 +41,13 @@
         <input class="btn btn-success btn-lg" type="submit" value="Apply">
     </form>
     @foreach($results as $year => $typearray)
-        <h1>{{$year}}</h1>
+        <h1>
+            {{$year}}
+            <a class="btn btn-warning btn-lg" href="/discuss?exam={{$exam}}&subject={{$subject}}&year={{$year}}">
+                Discuss
+            </a>
+        </h1>
+
         <div class="row">
         @foreach(array_keys($typearray) as $thistype)
             <div class="col">
