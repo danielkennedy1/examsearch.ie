@@ -25,3 +25,5 @@ Route::get('/results', 'App\Http\Controllers\ResultsController@show');
 Route::get('/download', 'App\Http\Controllers\DownloadController@download');
 
 Route::get('/ad', 'App\Http\Controllers\AdController@show'); 
+
+Route::get('/discuss', 'App\Http\Controllers\DiscussController@show');
