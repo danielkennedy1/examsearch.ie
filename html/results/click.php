@@ -3,7 +3,7 @@
 $servername = "localhost:3306";
 $username = "PHP";
 $password = "";
-$db="examsearch";
+$db="es-mediumtables";
 
 //New Connection
 $conn = new mysqli($servername, $username, $password, $db);

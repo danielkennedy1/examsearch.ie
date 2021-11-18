@@ -1,8 +1,10 @@
 <?php
 $linkstart = "https://www.examinations.ie/exammaterialarchive/?fp=";
+$linkstart2 = "https://archive.maths.nuim.ie/staff/dmalone/StateExamPapers/";
 function _Download($f_location, $f_name){
   global $linkstart;
-  if(substr($f_location, 0, 52) == $linkstart){
+  global $linkstart2;
+  if(substr($f_location, 0, 52) == $linkstart | substr($f_location, 0, 60) == $linkstart2){
     $file = uniqid() . ".pdf";
 
     file_put_contents($file,file_get_contents($f_location));

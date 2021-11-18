@@ -1,14 +1,39 @@
+3<?php 
+$fullexamname = [
+	"jc" => "Junior Certificate",
+	"lc" => "Leaving Certificate",
+	"lca" => "Leaving Certificate Applied"
+];
+$exam = $_GET['exam'];
+$subjects = [];
+$servername = "localhost:3306";
+$username = "root";
+$password = "";
+$db="examsearch";
+//SQL CONNECTION
+$conn = new mysqli($servername, $username, $password, $db);
+//Connection Error
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+	}
+//below is query for subjects
+@$subjects_query = "SELECT DISTINCT `subject` FROM `$exam` ORDER BY `subject` ASC";
+@$subresult = $conn->query($subjects_query);
+if (@$subresult->num_rows > 0) {
+	//this is called for every different subject in results set
+	while($currentsub = $subresult->fetch_assoc()) {
+		global $subjects;
+		array_push($subjects, $currentsub['subject']);
+	};
+	};
+$conn -> close();
+
+?>
+
 <!DOCTYPE html>
 
 <html>
 <head>
-	<?PHP
-        $fullexamname = [
-            "jc" => "Junior Certificate",
-            "lc" => "Leaving Certificate",
-            "lca" => "Leaving Certificate Applied"
-        ];
-    ?>
 	<title><?=$fullexamname[$_GET['exam']]?></title>
 	<!--Browser Stuff-->
 	<meta charset="utf-8">	
@@ -121,30 +146,6 @@ input[type=submit] {
 		<a class="nav-link" href="../tc/">Terms & Conditions</a>
 	</li>
 	</ul>
-	<?php
-	$subjects = [];
-	$servername = "localhost:3306";
-	$username = "PHP";
-	$password = "";
-	$db="examsearch";
-	//SQL CONNECTION
-	$conn = new mysqli($servername, $username, $password, $db);
-	//Connection Error
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-		}
-	//below is query for subjects
-	@$subjects_query = "SELECT DISTINCT subject FROM ema WHERE exam = '${_GET['exam']}' ORDER BY subject ASC";
-	@$subresult = $conn->query($subjects_query);
-	if (@$subresult->num_rows > 0) {
-		//this is called for every different subject in results set
-		while($currentsub = $subresult->fetch_assoc()) {
-			global $subjects;
-			array_push($subjects, $currentsub['subject']);
-		};
-		};
-	$conn -> close();
-	?>
 	<script>
 		var subjects = <?=json_encode($subjects)?>;
 		</script>
@@ -196,6 +197,8 @@ input[type=submit] {
 	foreach($subjects as $thissub){
 		global $a;
 		$currentletter= substr($thissub, 0, 1);
+		//if theres a new first letter in the subject value,
+		//print out a letter title
 		if($currentletter !== $a){
 			lettertitle($currentletter);
 		}
