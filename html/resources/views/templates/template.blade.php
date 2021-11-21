@@ -29,9 +29,6 @@
 		 h1{
 			 margin:0px;
 		 }
-		 html{
-			 overflow-x:hidden;
-		 }
 	 </style>
 	 @yield('header-stuff')
 </head>
@@ -44,20 +41,40 @@
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Exams</a>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="search/?exam=jc">Junior Certificate</a>
-      <a class="dropdown-item" href="search/?exam=lc">Leaving Certificate</a>
-      <a class="dropdown-item" href="search/?exam=lca">Leaving Certificate Applied</a>
+      <a class="dropdown-item" href="/search/?exam=jc">Junior Certificate</a>
+      <a class="dropdown-item" href="/search/?exam=lc">Leaving Certificate</a>
+      <a class="dropdown-item" href="/search/?exam=lca">Leaving Certificate Applied</a>
     </div>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="contact/">Contact</a>
+    <a class="nav-link" href="/contact/">Contact</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="poster/">Poster</a>
+    <a class="nav-link" href="/poster/">Poster</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="tc/">Terms & Conditions</a>
+    <a class="nav-link" href="/tc/">Terms & Conditions</a>
   </li>
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Account</a>
+		<div class="dropdown-menu">
+			@Auth
+				<p class="dropdown-item">
+					{{Auth::user()->name}}
+				</p>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="{{ route("logout") }}"
+				onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+				>Logout</a>
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+			@else
+				<a class="dropdown-item" href="{{route("login")}}">Log in</a>
+				<a class="dropdown-item" href="{{route("register")}}">Register</a>
+			@endauth
+		</div>
+	</li>
 </ul>
 @yield('content')
 </body>
