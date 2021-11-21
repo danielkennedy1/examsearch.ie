@@ -55,26 +55,30 @@
   <li class="nav-item">
     <a class="nav-link" href="/tc/">Terms & Conditions</a>
   </li>
-	<li class="nav-item dropdown">
+		@Auth
+		<li class="nav-item dropdown">
 		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Account</a>
-		<div class="dropdown-menu">
-			@Auth
+			<div class="dropdown-menu">
 				<p class="dropdown-item">
 					{{Auth::user()->name}}
 				</p>
 				<div class="dropdown-divider"></div>
+
 				<a class="dropdown-item" href="{{ route("logout") }}"
-				onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-				>Logout</a>
+				onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+					Logout
+				</a>
+
 				<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-			@else
-				<a class="dropdown-item" href="{{route("login")}}">Log in</a>
-				<a class="dropdown-item" href="{{route("register")}}">Register</a>
-			@endauth
-		</div>
-	</li>
+					@csrf
+				</form>
+			</div>
+		</li>
+		@else
+		<li class="nav-item">
+			<a class="nav-link" href="{{route("login")}}">Log in</a>
+		</li>
+		@endauth
 </ul>
 @yield('content')
 </body>
