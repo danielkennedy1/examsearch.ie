@@ -3,6 +3,7 @@
     {{$title}}
 @endsection
 @section("content")
+    <div class="container">
     <h1>{{$title}}</h1>
     @foreach($material as $year => $typearray)
         <div class="row">
@@ -32,4 +33,5 @@
         @endforeach
         </div>
     @endforeach
+    </div>
 @endsection

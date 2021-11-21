@@ -40,6 +40,8 @@
         <br>
         <input class="btn btn-success btn-lg" type="submit" value="Apply">
     </form>
+    <!--Results-->
+    <div class="container">
     @foreach($results as $year => $typearray)
         <h1>
             {{$year}}
@@ -47,10 +49,9 @@
                 Discuss
             </a>
         </h1>
-
         <div class="row">
         @foreach(array_keys($typearray) as $thistype)
-            <div class="col">
+            <div class="col flex-row">
             {{--If there is results for given type heading, otherwise col is left empty--}}
             {{--Prevents type headings with no results under them--}}
             @if($typearray[$thistype])
@@ -75,4 +76,5 @@
         @endforeach
         </div>
     @endforeach
+    </div>
 @endsection
