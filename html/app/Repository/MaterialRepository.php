@@ -64,7 +64,7 @@ class MaterialRepository {
                         $query -> where("resname",  "NOT LIKE", "%Higher%") 
                                 -> where("resname", "NOT LIKE", "%Ordinary%");
                     });
-                    error_log($res -> toSql());
+                    
                     
                     $material = $res -> get();
                     foreach($material as $row){
