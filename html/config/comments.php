@@ -7,18 +7,18 @@ return [
      * CustomComment model extending the Comment model shipped with the
      * package and change this configuration option to their extended model.
      */
-    'model' => \Laravelista\Comments\Comment::class,
+    'model' => App\Models\Mycomment::class,
 
     /**
      * You can customize the behaviour of these permissions by
      * creating your own and pointing to it here.
     */
-    
+    //App\Policies\MyCommentPolicy::class
     'permissions' => [
-        'create-comment' => 'Laravelista\Comments\CommentPolicy@create',
-        'delete-comment' => [Laravelista\Comments\CommentPolicy::class, 'delete'],
-        'edit-comment' => 'Laravelista\Comments\CommentPolicy@update',
-        'reply-to-comment' => 'Laravelista\Comments\CommentPolicy@reply',
+        'create-comment' => [App\Policies\MyCommentPolicy::class, 'create'],
+        'delete-comment' => [App\Policies\MyCommentPolicy::class, 'delete'],
+        'edit-comment' => [App\Policies\MyCommentPolicy::class, 'update'],
+        'reply-to-comment' => [App\Policies\MyCommentPolicy::class, 'reply'],
     ],
     
     /**
@@ -51,7 +51,7 @@ return [
      *     ])
      *
      */
-    'approval_required' => false,
+    'approval_required' => true,
 
     /**
      * Set this option to `true` to enable guest commenting.

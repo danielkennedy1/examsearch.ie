@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Mycomment;
+use App\Policies\MyCommentPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
@@ -16,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Mycomment::class => MyCommentPolicy::class
     ];
 
     /**
@@ -26,12 +29,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        Validator::extend('allowed_domain', function($attribute, $value, $parameters, $validator) {
-            //return in_array(explode('@', $value)[1], $this->allowedDomains);
-            $domain = substr($value, strpos($value, "@") + 1);
-            return DB::table("allowed_domains")->where("domain", "=", $domain)->exists();
-        }, 'Domain not valid for registration.  Please use your school email.');
-        
     }
 }

@@ -6,9 +6,21 @@
 
 <div id="comment-{{ $comment->getKey() }}" class="media">
     <div class="media-body">
-        <h5 class="mt-0 mb-1">{{ $author ?? $comment->guest_name }} <small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h5>
+        <h5 class="mt-0 mb-1">{{ $author ?? $comment->guest_name }} <small class="text-muted">- {{ $comment->created_at->diffForHumans() }} @if($comment->created_at != $comment->updated_at) - updated {{$comment->updated_at->diffForHumans()}}@endif</small></h5>
         <div style="white-space: pre-wrap;">{!! $markdown->line($comment->comment) !!}</div>
-
+        
+        <div>
+            @can('edit-comment', $comment)
+                <button data-toggle="modal" data-target="#comment-modal-{{ $comment->getKey() }}" class="btn btn-sm btn-link text-uppercase">@lang('comments::comments.edit')</button>
+            @endcan
+            @can('delete-comment', $comment)
+                <a href="{{ route('comments.destroy', $comment->getKey()) }}" onclick="event.preventDefault();document.getElementById('comment-delete-form-{{ $comment->getKey() }}').submit();" class="btn btn-sm btn-link text-danger text-uppercase">@lang('comments::comments.delete')</a>
+                <form id="comment-delete-form-{{ $comment->getKey() }}" action="{{ route('comments.destroy', $comment->getKey()) }}" method="POST" style="display: none;">
+                    @method('DELETE')
+                    @csrf
+                </form>
+            @endcan
+        </div>
 
         @can('edit-comment', $comment)
             <div class="modal fade" id="comment-modal-{{ $comment->getKey() }}" tabindex="-1" role="dialog">

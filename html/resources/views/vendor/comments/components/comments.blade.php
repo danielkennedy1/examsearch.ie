@@ -1,3 +1,4 @@
+@inject('markdown', 'Parsedown')
 @php
     if (isset($approved) and $approved == true) {
         $comments = $model->approvedComments;
@@ -10,6 +11,19 @@
     <div class="alert alert-warning">@lang('comments::comments.there_are_no_comments')</div>
 @endif
 
+@if($unapproved->count() > 0)
+<div class="jumbotron">
+    <h3> Awaiting Approval: </h3>
+    @foreach($unapproved as $num =>$comment)
+                <div id="comment-{{ $comment->getKey() }}" class="media">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">{{Auth::user()["name"]}}<small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h5>
+                        <div style="white-space: pre-wrap;">{!! $markdown->line($comment->comment) !!}</div>
+                    </div>
+                </div>
+            @endforeach
+</div>
+@endif
 <div>
     @php
         $comments = $comments->sortBy('created_at');

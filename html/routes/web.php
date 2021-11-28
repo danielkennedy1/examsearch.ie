@@ -3,6 +3,7 @@
 use App\Models\Search;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use App\Http\Controllers\AdminController;
 use App\Models\Discussion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -47,6 +48,5 @@ Route::get("/tc", function(){
 
 Auth::routes();
 
-Route::get("test", function(){
-    return view("test", ["discussion" => Discussion::where("id", 25)->first()]);
-});
+Route::get("admin", [AdminController::class, 'show'])->middleware("admin");
+Route::post("admin/approve", [AdminController::class, 'approve'])->middleware("admin");

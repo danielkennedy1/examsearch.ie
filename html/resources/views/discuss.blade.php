@@ -5,6 +5,7 @@
 @section("content")
     <div class="container">
     <h1>{{$title}}</h1>
+    <br>
     @foreach($material as $year => $typearray)
         <div class="row">
         @foreach(array_keys($typearray) as $thistype)
@@ -58,8 +59,10 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     --}}
+    <hr>
     <h1>Discussion</h1>
     @comments(["model" => $discussion,
                 "mycomments"=>$mycomments,
-                "users" =>$users])
+                "users" =>$users,
+                "unapproved = $unapproved"])
 @endsection

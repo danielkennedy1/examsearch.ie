@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use Laravelista\Comments\CommentControllerInterface;
 use App\Models\MyComment;
 use Laravelista\Comments\Comment;
-
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 
@@ -79,9 +79,11 @@ class MyCommentController extends Controller implements CommentControllerInterfa
         ])->validate();
 
         $comment->update([
-            'comment' => $request->message
+            'comment' => $request->message,
+            'approved' => 0,
+            'updated_at' => Carbon::now()
         ]);
-
+        error_log(Carbon::now());
         return Redirect::to(URL::previous() . '#comment-' . $comment->getKey());
     }
 
