@@ -3,7 +3,10 @@
 use App\Models\Search;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use App\Models\Discussion;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Laravelista\Comments\Comment;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +47,6 @@ Route::get("/tc", function(){
 
 Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::post('/discuss', [Controllers\CommentsController::class, 'store']);
+Route::get("test", function(){
+    return view("test", ["discussion" => Discussion::where("id", 25)->first()]);
+});
