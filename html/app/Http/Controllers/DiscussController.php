@@ -22,6 +22,7 @@ class DiscussController extends Controller
         if($materialRepository::validate($exam, $subject)){
             
             $discussion = Discussion::where("exam", $exam)->where("subject", $subject)->where("year", $year)->first();
+            $discussion->increment("views");
             $myComments = Mycomment::where("discussion_id", $discussion->id)->where("approved", 1)->get();
             $unapproved = Mycomment::where("user_id", Auth::id())->where("approved", 0)->get();
             $users = array();

@@ -11,4 +11,6 @@ class Discussion extends Model
     use HasFactory, Commentable;
 
     protected $primaryKey = "id";
+
+    public $timestamps = false;
 }
