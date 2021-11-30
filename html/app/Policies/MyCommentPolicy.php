@@ -29,7 +29,7 @@ class MyCommentPolicy
     public function delete($user, Comment $comment) : bool
     {
         //was changed
-        return $user->id == $comment->user_id | $user->id ==1;
+        return $user->id == $comment->user_id | $user->email == "danielrkennedy03@gmail.com";
     }
 
     /**
