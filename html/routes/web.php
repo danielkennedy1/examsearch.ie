@@ -49,4 +49,5 @@ Route::get("/tc", function(){
 Auth::routes();
 
 Route::get("admin", [AdminController::class, 'show'])->middleware("admin");
+Route::get("admin/all", [AdminController::class, 'all'])->middleware("admin");
 Route::post("admin/approve", [AdminController::class, 'approve'])->middleware("admin");

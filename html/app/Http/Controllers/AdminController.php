@@ -22,8 +22,15 @@ class AdminController extends Controller
 
     public function approve(Request $request){
         $approved_id = $request->input("approved-id");
-        error_log("approve method caled with id $approved_id");
         Mycomment::where("id", $approved_id)->update(["approved" => 1]);
         return redirect()->back();
+    }
+
+    public function all(User $user, Discussion $discussion){
+        return view("allcomments", 
+        ["comments" => Mycomment::all(),
+         "usersmodel" => $user,
+         "discussionmodel"=>$discussion
+    ]);
     }
 }
