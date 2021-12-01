@@ -1,5 +1,5 @@
 
-   ![Examsearch Logo](https://github.com/danielkennedy1/examsearch.ie/blob/Laravel/html/public/images/logo.png)
+   ![Examsearch Logo](https://examsearch.ie/images/logo.png)
 
 # [Examsearch.ie](https://examsearch.ie)
 ## Past Papers Organised
