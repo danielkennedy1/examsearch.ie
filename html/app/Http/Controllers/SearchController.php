@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Repository\MaterialRepository;
 
 class SearchController extends Controller
 {
-    public function show(Request $request){
+    public function show(Request $request, MaterialRepository $materialRepository){
         $exam = $request -> input("exam");
         if(in_array($exam, ["jc", "lc", "lca"])){
             $db_response = DB::select("SELECT `subject` from $exam ORDER BY `subject` ASC");
@@ -15,7 +16,7 @@ class SearchController extends Controller
                 global $subjects;
                 $subjects[] = $tablerow->subject;
             }
-            $examname = ResultsController::fullexamnames[$exam];
+            $examname = $materialRepository::fullexamnames[$exam];
             $subjects_json = json_encode($subjects);
             return view('search', [ 'subjects' => $subjects, 
                                     'exam' => $exam, 
