@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 //WAS CHANGED
-use App\Models\Mycomment as Comment;
+use App\Models\MyComment as Comment;
 
 class MyCommentPolicy
 {

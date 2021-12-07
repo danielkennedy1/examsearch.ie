@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Mycomment extends Model
+class MyComment extends Model
 {
     use HasFactory, SoftDeletes;
     
     protected $guarded = [];
-    protected $tableName ="mycomments";
+    protected $table ="mycomments";
 
      /**
      * The user who posted the comment.

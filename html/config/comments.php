@@ -7,7 +7,7 @@ return [
      * CustomComment model extending the Comment model shipped with the
      * package and change this configuration option to their extended model.
      */
-    'model' => App\Models\Mycomment::class,
+    'model' => App\Models\MyComment::class,
 
     /**
      * You can customize the behaviour of these permissions by
