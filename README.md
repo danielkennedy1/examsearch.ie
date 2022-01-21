@@ -1,8 +1,18 @@
+<div id="top"></div>
 
-   ![Examsearch Logo](https://examsearch.ie/images/logo.png)
+# [Examsearch](https://examsearch.ie)
+LC, JC, and LCA exam papers, accessible from an intuitive user interface to save time for students & teachers alike
+![Examsearch Logo](https://examsearch.ie/images/logo.png)
 
-# [Examsearch.ie](https://examsearch.ie)
-## Past Papers Organised
 
-made with...
-![Laravel Logo](https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg)
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Built With 
+* [Laravel](https://laravel.com)
+* [Bootstrap](https://getbootstrap.com)
+
+## Contact
+
+Daniel Kennedy - danielrkennedy03@gmail.com  - [LinkedIn](https://www.linkedin.com/in/danielkennedy-/)
+
+
