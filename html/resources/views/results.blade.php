@@ -5,9 +5,9 @@
 @section('content')
     <h1>{{$title}}</h1>
 	<a class="btn btn-dark btn-lg" href="javascript:history.back()">Back</a>
-	<div class="text-center">
+	<div class="text-center sticky-top my-4">
 		<a href="/ad">
-			<img src="../images/ad.png" style="max-height: 12.36vw;max-width: 100vw;margin:auto;border:2px solid black">
+			<img src="../images/mathstutor.png" style="max-height: 12.36vw;max-width: 100vw;margin:auto;border:2px solid black">
 		</a>
 	</div>
     <!--Filters-->
