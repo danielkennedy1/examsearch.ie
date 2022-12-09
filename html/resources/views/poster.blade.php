@@ -17,8 +17,8 @@
 @endsection
 @section("content")
 <div id="posterbox">
-            <img style="max-width: 75vw;max-height: 75vh;" src="/examsearch-poster.png">
-            <button class="btn btn-warning">
+            <img class="mt-4" style="max-width: 75vw;max-height: 75vh;" src="/examsearch-poster.png">
+            <button class="btn btn-warning mt-3">
                 <a id="pdflink" href="/examsearch-poster.pdf">
                     <h1>
                         Print PDF

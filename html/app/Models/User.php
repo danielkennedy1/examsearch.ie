@@ -11,7 +11,7 @@ use Laravelista\Comments\Commenter;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Commenter;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.

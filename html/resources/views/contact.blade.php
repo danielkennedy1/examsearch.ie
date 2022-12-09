@@ -19,5 +19,7 @@
 </style>
 @endsection
 @section("content")
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScFJB3H0ElcDIFr39_z-Aq28shC3qHQ2lEnoIP5Y5T73kqqYg/viewform?embedded=true" id="form">Loading…</iframe>
+<div class="container">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScFJB3H0ElcDIFr39_z-Aq28shC3qHQ2lEnoIP5Y5T73kqqYg/viewform?embedded=true" id="form">Loading…</iframe>
+</div>
 @endsection

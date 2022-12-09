@@ -38,14 +38,6 @@
   <li class="nav-item">
     <a class="nav-link" href="/">Home</a>
   </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Exams</a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="/search/?exam=jc">Junior Certificate</a>
-      <a class="dropdown-item" href="/search/?exam=lc">Leaving Certificate</a>
-      <a class="dropdown-item" href="/search/?exam=lca">Leaving Certificate Applied</a>
-    </div>
-  </li>
   <li class="nav-item">
     <a class="nav-link" href="/contact/">Contact</a>
   </li>

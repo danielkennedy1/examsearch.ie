@@ -1,13 +1,8 @@
 <?php
-
-use App\Models\Search;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\AdminController;
-use App\Models\Discussion;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Laravelista\Comments\Comment;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,16 +18,6 @@ use Laravelista\Comments\Comment;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/search', [Controllers\SearchController::class, 'show']);
-
-Route::get('/results', [Controllers\ResultsController::class, 'show']);
-
-Route::get('/download', [Controllers\DownloadController::class, 'download']);
-
-Route::get('/ad', [Controllers\AdController::class, 'show']); 
-
-Route::get('/discuss', [Controllers\DiscussController::class, 'show']);
 
 Route::get("/contact", function(){
     return view("contact");
