@@ -13,6 +13,13 @@ let examList = [];
 let markList = [];
 
 
+// Common subjects for each exam
+const commonSubjects = {
+    "lc": ["Mathematics", "English", "Physics", "Biology", "Irish" ],
+    "jc": ["Mathematics", "English", "Science", "Irish", "History"],
+    "lca": ["Mathematic Applications", "Social Education", "English and Communication", "Hair And Beauty", "Mathematics"]
+}
+
 // Full name of exam from value
 const examDict = {
     "lc": "Leaving Certificate",
@@ -30,6 +37,10 @@ const clearYears = (disabled) => {
     document.getElementById("yearSelect").innerHTML = "Select Year";
     document.getElementById("yearSelect").disabled = disabled;
     document.getElementById("yearList").innerHTML = "";
+};
+
+const commonSubjectDropdown = (exam) => {
+    
 };
 
 const examDropdown = document.getElementById("examDropdown");
@@ -52,6 +63,7 @@ const getSubjects = (_exam) => {
             searchBar.disabled = false;
             //reset autocomplete options for subject search
             autocomplete(searchBar, subjects);
+            searchBar.focus();
         });
 };
 
